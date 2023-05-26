@@ -16,6 +16,7 @@ declare global {
       TARA_REDIRECT_URL: string;
       ANALYTICS_URL: string;
       MONITORING_URL: string;
+      BACKOFFICE_URL: string;
       AUTHORITY_NAME: string;
       PASSWORD_AUTH_ENABLED: boolean;
       INSTITUTION_FORWARDING_ENABLED: boolean;

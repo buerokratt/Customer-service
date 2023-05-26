@@ -92,8 +92,9 @@ export const authenticationSlice = createSlice({
     builder.addCase(loginUser.rejected, (state) => {
       state.isAuthenticated = false;
     });
-    builder.addCase(loginUser.fulfilled, (state) => {
-      state.isAuthenticated = true;
+    builder.addCase(loginUser.fulfilled, (_) => {
+      console.log('hey')
+      window.location.href = window._env_.BACKOFFICE_URL;
     });
     builder.addCase(loginWithTaraJwt.rejected, (state) => {
       state.isAuthenticated = false;
