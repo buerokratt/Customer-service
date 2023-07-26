@@ -62,8 +62,8 @@ const ChatToolbox = (props: HTMLAttributes<HTMLElement>): JSX.Element => {
         chatId: selectedChat.id,
         event: wasHappyEnding ? CHAT_EVENTS.ANSWERED : CHAT_EVENTS.TERMINATED,
         authorTimestamp: new Date().toISOString(),
-        authorFirstName: userLogin,
-        authorId: customerSupportId,
+        authorFirstName: userLogin ? userLogin : 'Bürokratt',
+        authorId: customerSupportId ? customerSupportId : 'bot_institution_id',
         authorRole: AUTHOR_ROLES.BACKOFFICE_USER,
       };
       dispatch(addMessage(terminationMessage));
