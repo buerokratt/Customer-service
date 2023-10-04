@@ -93,16 +93,14 @@ export const authenticationSlice = createSlice({
       state.isAuthenticated = false;
     });
     builder.addCase(loginUser.fulfilled, (_) => {
-      console.log('hey')
       window.location.href = window._env_.BACKOFFICE_URL;
     });
     builder.addCase(loginWithTaraJwt.rejected, (state) => {
       state.isAuthenticated = false;
       state.authenticationFailed = true;
     });
-    builder.addCase(loginWithTaraJwt.fulfilled, (state) => {
-      state.isAuthenticated = true;
-      state.authenticationFailed = false;
+    builder.addCase(loginWithTaraJwt.fulfilled, (_) => {
+      window.location.href = window._env_.BACKOFFICE_URL;
     });
     builder.addCase(logoutUser.fulfilled, (state) => {
       state.isAuthenticated = false;
