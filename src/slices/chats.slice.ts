@@ -213,7 +213,7 @@ export const chatsSlice = createSlice({
         state.selectedChatMessages.push(...receivedMessages);
       }
 
-      state.lastReadMessageDate = state.selectedChatMessages[state.selectedChatMessages.length - 1].updated || state.lastReadMessageDate;
+      state.lastReadMessageDate = state.selectedChatMessages[state.selectedChatMessages.length - 1]?.updated || state.lastReadMessageDate;
     },
     updateActiveChatMessage: (state, action: PayloadAction<MessageModel>) => {
       state.selectedChatMessages = state.selectedChatMessages.map((message) => (message.id === action.payload.id ? action.payload : message));
