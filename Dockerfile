@@ -14,7 +14,7 @@ COPY . .
 RUN npm run build
 
 FROM $nginx_version
-COPY ./nginx/https-nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx/http-nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build ./usr/customer-service/build /usr/share/nginx/html/customer-service
 EXPOSE 443
 CMD ["nginx", "-g", "daemon off;"]
