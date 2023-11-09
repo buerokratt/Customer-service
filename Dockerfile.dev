@@ -6,7 +6,7 @@ FROM image AS build
 ARG env=DEV
 RUN npm install --legacy-peer-deps
 COPY . .
-RUN npm run build
+RUN npm run build --legacy-peer-deps
 
 EXPOSE 3004
 
