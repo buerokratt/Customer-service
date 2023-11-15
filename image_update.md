@@ -4,6 +4,6 @@ The Docker image has been successfully built and pushed.
 
 You can pull the updated image using the following command:
 
-<code>docker pull ghcr.io/buerokratt/customer-service:PRE-APHA-2.1.2</code>
+<code>docker pull ghcr.io/buerokratt/customer-service:PRE-APHA-2.2.3</code>
 
 Enjoy the Ruuter!
