@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Howl } from 'howler';
+import ding from '../static/ding.mp3';
 
 export const useAudio = (audiosrc: string) => {
   const [audio, setAudio] = useState<Howl | null>(null);
@@ -25,5 +26,5 @@ export const useAudio = (audiosrc: string) => {
 }
 
 export const useDing = () => {
-  return useAudio(`${process.env.PUBLIC_URL}/ding.mp3`);
+  return useAudio(ding);
 }
