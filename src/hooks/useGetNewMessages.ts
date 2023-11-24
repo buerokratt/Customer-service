@@ -12,14 +12,18 @@ const useGetNewMessages = (chatId: string | undefined): void => {
 
   useEffect(() => {
     if (!chatId || chatId === '-1' || !isAuthenticated || !selectedActiveChat) return undefined;
-    const sseInstance = sse(`cs-get-new-messages?chatId=${chatId}&lastRead=${lastReadMessageDate.split('+')[0]}`);
 
-    sseInstance.onMessage((data: MessageModel[]) => {
+    const onMessage = (data: MessageModel[]) => {
       dispatch(addNewMessages(data));
-    });
+    };
+
+    const events = sse(
+      `cs-get-new-messages?chatId=${chatId}&lastRead=${lastReadMessageDate.split('+')[0]}`,
+      onMessage
+    );
 
     return () => {
-      sseInstance.close();
+      events.close();
     };
   }, [isAuthenticated, dispatch, lastReadMessageDate, chatId, selectedActiveChat]);
 };

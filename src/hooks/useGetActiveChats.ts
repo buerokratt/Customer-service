@@ -9,16 +9,16 @@ const useGetActiveChats = (): void => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const sseInstance = sse('cs-get-all-active-chats');
-
-    sseInstance.onMessage((data: Chat[]) => {
+    const onMessage = (data: Chat[]) => {
       if (data !== undefined) {
         dispatch(setActiveChats({ customerSupportId, data, checkNewMessages: true }));
       }
-    });
+    };
+
+    const events = sse('cs-get-all-active-chats', onMessage);
 
     return () => {
-      sseInstance.close();
+      events.close();
     };
   }, [customerSupportId, dispatch]);
 };
