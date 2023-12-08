@@ -8,14 +8,14 @@ COPY ./package*.json ./
 
 FROM image AS build
 ARG env=DEV
-RUN npm ci --legacy-peer-deps
+RUN npm install --legacy-peer-deps
 COPY . .
 
 RUN npm run build
 
 FROM $nginx_version
-COPY ./nginx/https-nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx/http-nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build ./usr/customer-service/build /usr/share/nginx/html/customer-service
-EXPOSE 443
+EXPOSE 3004
 CMD ["nginx", "-g", "daemon off;"]
 
